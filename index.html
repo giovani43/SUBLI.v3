@@ -1,0 +1,1260 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Sublimarce - Sublimación y productos personalizados. Gorras, tazas, remeras, llaveros y más.">
+  <title>Sublimarce - Tus Ideas Hechas Realidad</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <style>
+/* =====================================================
+   SUBLIMARCE v3 — Global Stylesheet
+   Paleta: Navy Ink + Brick Red + Amber Gold + Teal
+   WCAG AA compliant en todos los combos
+   ===================================================== */
+
+/* ── GOOGLE FONTS (cargadas en cada HTML) ── */
+
+:root {
+  /* ── Paleta Principal ── */
+  --ink:        #1A1A2E;   /* Navy profundo — base dark */
+  --ink-soft:   #16213E;   /* Navy medio */
+  --accent:     #E8401C;   /* Rojo ladrillo — CTA principal */
+  --accent-h:   #C93517;   /* Hover del rojo */
+  --gold:       #F5A623;   /* Ámbar dorado — acento 2 */
+  --teal:       #00C9A7;   /* Teal — WhatsApp / CTAs sec. */
+  --teal-h:     #00A888;
+  --grad:       linear-gradient(135deg, #E8401C 0%, #F5A623 100%);
+  --grad-cool:  linear-gradient(135deg, #1A1A2E 0%, #16213E 100%);
+
+  /* ── Superficies (Light Mode) ── */
+  --bg:         #FAFAF8;   /* Fondo principal cálido */
+  --bg-alt:     #F2F0EB;   /* Fondo secciones alt */
+  --card:       #FFFFFF;
+  --border:     #E2DDD5;
+  --text:       #1A1A2E;   /* Mismo ink — contraste 15:1 sobre bg */
+  --text-2:     #4A4A6A;   /* Texto secundario — contraste 5.5:1 */
+  --text-3:     #7A7A9A;   /* Texto muted */
+
+  /* ── Superficies (Dark Mode) ── */
+  --dk-bg:      #0D0D1A;
+  --dk-bg-alt:  #11112A;
+  --dk-card:    #16162A;
+  --dk-border:  #252540;
+  --dk-text:    #F0EFE8;
+  --dk-text-2:  #A0A0C0;
+  --dk-text-3:  #6060A0;
+
+  /* ── Tipografía ── */
+  --font-d: 'Bebas Neue', 'Impact', sans-serif;
+  --font-b: 'DM Sans', 'Helvetica Neue', Arial, sans-serif;
+
+  /* ── Layout ── */
+  --hdr:    68px;
+  --pad:    clamp(3rem, 8vw, 5.5rem);
+  --r-card: 16px;
+  --r-btn:  50px;
+  --max-w:  1200px;
+
+  /* ── Shadows ── */
+  --sh-sm:  0 2px 8px rgba(26,26,46,.08);
+  --sh-md:  0 6px 24px rgba(26,26,46,.12);
+  --sh-lg:  0 16px 48px rgba(26,26,46,.18);
+  --sh-acc: 0 8px 28px rgba(232,64,28,.35);
+  --sh-teal:0 6px 20px rgba(0,201,167,.3);
+}
+
+/* ── DARK MODE VARS ── */
+body.dark {
+  --bg:     var(--dk-bg);
+  --bg-alt: var(--dk-bg-alt);
+  --card:   var(--dk-card);
+  --border: var(--dk-border);
+  --text:   var(--dk-text);
+  --text-2: var(--dk-text-2);
+  --text-3: var(--dk-text-3);
+}
+
+/* ── RESET ── */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; font-size: 16px; }
+body {
+  font-family: var(--font-b);
+  background: var(--bg);
+  color: var(--text);
+  line-height: 1.65;
+  transition: background .3s, color .3s;
+  -webkit-font-smoothing: antialiased;
+}
+img { max-width: 100%; height: auto; display: block; }
+a { text-decoration: none; color: inherit; }
+ul { list-style: none; }
+button { cursor: pointer; font-family: inherit; }
+
+/* ── CONTAINER ── */
+.container { width: 100%; max-width: var(--max-w); margin: 0 auto; padding: 0 1.25rem; }
+@media(min-width:768px){ .container { padding: 0 2rem; } }
+
+/* =====================================================
+   HEADER
+   ===================================================== */
+#main-header {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+  height: var(--hdr);
+  display: flex; align-items: center;
+  background: rgba(250,250,248,.95);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border-bottom: 1px solid var(--border);
+  transition: background .3s, border-color .3s;
+}
+body.dark #main-header {
+  background: rgba(13,13,26,.95);
+  border-color: var(--border);
+}
+#main-header .container {
+  display: flex; align-items: center;
+  justify-content: space-between; height: 100%; gap: 1rem;
+}
+
+/* Logo */
+#logo a {
+  display: flex; align-items: center; gap: .6rem;
+  font-family: var(--font-d); font-size: 1.55rem;
+  letter-spacing: .06em; color: var(--ink);
+  transition: color .2s;
+}
+body.dark #logo a { color: var(--dk-text); }
+#logo img {
+  width: 40px; height: 40px; border-radius: 50%;
+  object-fit: cover;
+  border: 2.5px solid var(--accent);
+  box-shadow: 0 0 0 4px rgba(232,64,28,.12);
+}
+
+/* Nav */
+#mainNav { display: flex; align-items: center; gap: .1rem; }
+#mainNav a {
+  font-size: .84rem; font-weight: 600;
+  padding: .38rem .7rem; border-radius: 7px;
+  color: var(--text-2);
+  transition: color .2s, background .2s;
+  white-space: nowrap;
+}
+body.dark #mainNav a { color: var(--dk-text-2); }
+#mainNav a:hover { color: var(--accent); background: rgba(232,64,28,.07); }
+#mainNav a.active {
+  color: var(--accent);
+  background: rgba(232,64,28,.1);
+}
+
+/* Header actions */
+.hdr-actions { display: flex; align-items: center; gap: .5rem; flex-shrink: 0; }
+
+#darkModeToggle {
+  background: none; border: none;
+  padding: .48rem; border-radius: 8px;
+  color: var(--text-3); font-size: 1rem;
+  transition: color .2s, background .2s;
+  display: flex; align-items: center;
+}
+#darkModeToggle:hover { color: var(--accent); background: rgba(232,64,28,.07); }
+
+.btn-wa-header {
+  display: flex; align-items: center; gap: .4rem;
+  background: var(--teal); color: #fff !important;
+  padding: .44rem .95rem; border-radius: var(--r-btn);
+  font-size: .8rem; font-weight: 700;
+  white-space: nowrap;
+  box-shadow: var(--sh-teal);
+  transition: background .2s, transform .2s;
+}
+.btn-wa-header:hover { background: var(--teal-h); transform: translateY(-1px); }
+
+/* Mobile toggle */
+#mobileMenuButton {
+  display: none; background: none;
+  border: 1.5px solid var(--border); border-radius: 8px;
+  padding: .42rem .5rem; color: var(--text);
+  font-size: .95rem; align-items: center;
+}
+@media(max-width:768px){
+  #mobileMenuButton { display: flex; }
+  .btn-wa-header span { display: none; }
+  #mainNav {
+    display: none; position: fixed;
+    top: var(--hdr); left: 0; right: 0;
+    flex-direction: column; align-items: stretch;
+    background: var(--card);
+    border-bottom: 1px solid var(--border);
+    padding: 1rem 1.25rem 1.5rem; gap: .2rem;
+    box-shadow: var(--sh-lg);
+  }
+  #mainNav.open { display: flex; }
+  #mainNav a { padding: .75rem 1rem; font-size: .98rem; border-radius: 10px; }
+}
+
+/* =====================================================
+   MAIN + SECTIONS
+   ===================================================== */
+main { padding-top: var(--hdr); }
+section { padding: var(--pad) 0; }
+
+/* ── Section labels & titles ── */
+.section-label {
+  display: inline-flex; align-items: center; gap: .5rem;
+  font-size: .72rem; font-weight: 700;
+  text-transform: uppercase; letter-spacing: .13em;
+  color: var(--accent); margin-bottom: .7rem;
+}
+.section-label::before {
+  content: ''; display: block;
+  width: 22px; height: 2px; background: var(--accent);
+}
+
+.section-title {
+  font-family: var(--font-d);
+  font-size: clamp(2rem, 5vw, 3.4rem);
+  letter-spacing: .025em; line-height: 1.05;
+  color: var(--text); margin-bottom: .9rem;
+}
+
+.section-desc {
+  font-size: 1rem; color: var(--text-2);
+  max-width: 550px; line-height: 1.75;
+}
+
+/* =====================================================
+   HERO
+   ===================================================== */
+#inicio {
+  position: relative;
+  min-height: calc(100vh - var(--hdr));
+  display: flex; align-items: center;
+  background: var(--ink); overflow: hidden;
+}
+
+/* Geometric texture background */
+#inicio::before {
+  content: '';
+  position: absolute; inset: 0;
+  background-image:
+    radial-gradient(circle at 15% 50%, rgba(232,64,28,.18) 0%, transparent 50%),
+    radial-gradient(circle at 85% 20%, rgba(245,166,35,.12) 0%, transparent 45%),
+    radial-gradient(circle at 60% 80%, rgba(0,201,167,.08) 0%, transparent 40%);
+  pointer-events: none;
+}
+
+/* Subtle grid pattern */
+#inicio::after {
+  content: '';
+  position: absolute; inset: 0;
+  background-image: linear-gradient(rgba(255,255,255,.03) 1px, transparent 1px),
+                    linear-gradient(90deg, rgba(255,255,255,.03) 1px, transparent 1px);
+  background-size: 40px 40px;
+  pointer-events: none;
+}
+
+.hero-bg {
+  position: absolute; inset: 0;
+  background: url('gorranegra.webp') center/cover no-repeat;
+  opacity: .12;
+}
+
+.hero-overlay {
+  position: absolute; inset: 0;
+  background: linear-gradient(135deg, rgba(13,13,26,.97) 0%, rgba(26,26,46,.85) 60%, rgba(22,33,62,.7) 100%);
+}
+
+.hero-content { position: relative; z-index: 2; padding: 4rem 0; }
+/* Arreglo para el mail del footer */
+.main-footer a {
+  color: inherit !important; /* Mantiene el color blanco/gris del footer */
+  text-decoration: none !important; /* Quita el subrayado molesto */
+}
+
+.main-footer a:hover {
+  text-decoration: underline; /* Solo se subraya cuando pasas el mouse */
+  opacity: 0.8;
+}
+
+.hero-eyebrow {
+  display: inline-flex; align-items: center; gap: .5rem;
+  background: rgba(232,64,28,.15);
+  border: 1px solid rgba(232,64,28,.3);
+  color: #FF8060;
+  padding: .28rem .85rem; border-radius: 20px;
+  font-size: .75rem; font-weight: 700;
+  letter-spacing: .1em; text-transform: uppercase;
+  margin-bottom: 1.5rem;
+  animation: fadeUp .6s both;
+}
+
+.hero-title {
+  font-family: var(--font-d);
+  font-size: clamp(3.8rem, 13vw, 8.5rem);
+  line-height: .92; color: #fff;
+  margin-bottom: 1.5rem;
+  animation: fadeUp .6s .1s both;
+}
+.hero-title .acc { color: var(--accent); }
+.hero-title .acc2 { color: var(--gold); }
+
+.hero-subtitle {
+  font-size: clamp(.95rem, 2.5vw, 1.15rem);
+  color: rgba(255,255,255,.65);
+  max-width: 470px; margin-bottom: 2.5rem; line-height: 1.8;
+  animation: fadeUp .6s .2s both;
+}
+
+.hero-actions { display: flex; flex-wrap: wrap; gap: 1rem; animation: fadeUp .6s .3s both; }
+
+.hero-stats {
+  display: flex; flex-wrap: wrap; gap: 2.5rem;
+  margin-top: 3rem; padding-top: 2rem;
+  border-top: 1px solid rgba(255,255,255,.1);
+  animation: fadeUp .6s .45s both;
+}
+.stat-num {
+  font-family: var(--font-d); font-size: 2.1rem;
+  color: #fff; line-height: 1;
+}
+.stat-label {
+  font-size: .75rem; color: rgba(255,255,255,.42);
+  text-transform: uppercase; letter-spacing: .08em; margin-top: .18rem;
+}
+
+/* =====================================================
+   BUTTONS
+   ===================================================== */
+.btn-primary {
+  display: inline-flex; align-items: center; gap: .5rem;
+  background: var(--grad); color: #fff;
+  padding: .85rem 2rem; border-radius: var(--r-btn);
+  font-weight: 700; font-size: .95rem; border: none;
+  box-shadow: var(--sh-acc);
+  transition: transform .2s, box-shadow .2s, filter .2s;
+  cursor: pointer;
+}
+.btn-primary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 12px 36px rgba(232,64,28,.45);
+  filter: brightness(1.05);
+}
+
+.btn-secondary {
+  display: inline-flex; align-items: center; gap: .5rem;
+  background: rgba(255,255,255,.08); backdrop-filter: blur(8px);
+  color: #fff; padding: .85rem 2rem; border-radius: var(--r-btn);
+  font-weight: 600; font-size: .95rem;
+  border: 1px solid rgba(255,255,255,.2);
+  transition: background .2s, transform .2s;
+}
+.btn-secondary:hover { background: rgba(255,255,255,.16); transform: translateY(-2px); }
+
+.btn-wa {
+  display: inline-flex; align-items: center; gap: .6rem;
+  background: var(--teal); color: #fff !important;
+  padding: .72rem 1.4rem; border-radius: var(--r-btn);
+  font-weight: 700; font-size: .88rem; width: 100%;
+  justify-content: center;
+  box-shadow: var(--sh-teal);
+  transition: transform .2s, background .2s, box-shadow .2s;
+}
+.btn-wa:hover {
+  background: var(--teal-h); transform: translateY(-2px);
+  box-shadow: 0 10px 28px rgba(0,201,167,.42);
+}
+
+.btn-outline {
+  display: inline-flex; align-items: center; gap: .45rem;
+  background: transparent; color: var(--accent);
+  padding: .5rem 1.1rem; border-radius: var(--r-btn);
+  font-weight: 700; font-size: .82rem;
+  border: 2px solid var(--accent);
+  transition: background .2s, color .2s, transform .2s;
+  white-space: nowrap;
+}
+.btn-outline:hover { background: var(--accent); color: #fff; transform: translateY(-1px); }
+
+.btn-ghost {
+  display: inline-flex; align-items: center; gap: .5rem;
+  background: transparent; color: var(--text-2);
+  padding: .7rem 1.5rem; border-radius: var(--r-btn);
+  font-weight: 600; font-size: .9rem;
+  border: 1.5px solid var(--border);
+  transition: border-color .2s, color .2s;
+}
+.btn-ghost:hover { border-color: var(--accent); color: var(--accent); }
+
+/* =====================================================
+   PRODUCT CARDS
+   ===================================================== */
+.products-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(270px, 1fr));
+  gap: 1.5rem;
+}
+
+.product-card {
+  background: var(--card);
+  border-radius: var(--r-card); overflow: hidden;
+  border: 1px solid var(--border);
+  box-shadow: var(--sh-sm);
+  transition: transform .3s, box-shadow .3s, border-color .3s;
+  display: flex; flex-direction: column;
+}
+.product-card:hover {
+  transform: translateY(-7px);
+  box-shadow: var(--sh-lg);
+  border-color: rgba(232,64,28,.25);
+}
+
+.product-card-img {
+  position: relative; aspect-ratio: 4/3; overflow: hidden;
+  background: var(--bg-alt);
+}
+.product-card-img img {
+  width: 100%; height: 100%; object-fit: cover;
+  transition: transform .55s ease;
+}
+.product-card:hover .product-card-img img { transform: scale(1.08); }
+
+.product-badge {
+  position: absolute; top: .7rem; left: .7rem;
+  background: var(--grad); color: #fff;
+  font-size: .67rem; font-weight: 700;
+  letter-spacing: .07em; text-transform: uppercase;
+  padding: .22rem .62rem; border-radius: 20px;
+  box-shadow: 0 2px 8px rgba(232,64,28,.3);
+}
+
+.product-card-body {
+  padding: 1.2rem 1.2rem 0; flex: 1;
+  display: flex; flex-direction: column;
+}
+.product-card-body h3 {
+  font-size: 1rem; font-weight: 700;
+  color: var(--text); margin-bottom: .35rem;
+}
+.product-card-body p {
+  font-size: .85rem; color: var(--text-2);
+  line-height: 1.6; flex: 1; margin-bottom: .9rem;
+}
+
+.product-card-footer {
+  display: flex; align-items: center;
+  justify-content: space-between; gap: .7rem;
+}
+
+.product-price {
+  font-family: var(--font-d); font-size: 1.45rem;
+  color: var(--text); letter-spacing: .02em; line-height: 1.1;
+}
+.product-price small {
+  font-family: var(--font-b); font-size: .67rem;
+  font-weight: 600; color: var(--text-3);
+  letter-spacing: .05em; text-transform: uppercase;
+  display: block; line-height: 1; margin-bottom: .1rem;
+}
+
+.product-card-wa { padding: 0 1.2rem 1.2rem; }
+
+/* Color dots */
+.color-options { display: flex; flex-wrap: wrap; gap: .45rem; margin: .65rem 0 .9rem; }
+.color-dot {
+  width: 24px; height: 24px; border-radius: 50%;
+  cursor: pointer; border: 2px solid transparent;
+  transition: transform .2s, border-color .2s, box-shadow .2s;
+  box-shadow: 0 2px 6px rgba(0,0,0,.2);
+}
+.color-dot:hover { transform: scale(1.18); }
+.color-dot.selected {
+  border-color: var(--text);
+  box-shadow: 0 0 0 3px rgba(232,64,28,.25), 0 2px 8px rgba(0,0,0,.25);
+  transform: scale(1.1);
+}
+
+/* =====================================================
+   CATEGORY FILTER PILLS
+   ===================================================== */
+.cat-nav { display: flex; flex-wrap: wrap; gap: .55rem; margin-bottom: 2.25rem; }
+.cat-btn {
+  background: none; border: 1.5px solid var(--border);
+  border-radius: var(--r-btn); padding: .42rem 1rem;
+  font-size: .83rem; font-weight: 600; color: var(--text-3);
+  transition: all .2s; cursor: pointer;
+}
+.cat-btn:hover { border-color: var(--accent); color: var(--accent); }
+.cat-btn.active { background: var(--accent); border-color: var(--accent); color: #fff; box-shadow: var(--sh-acc); }
+
+/* =====================================================
+   HOW TO ORDER — STEPS
+   ===================================================== */
+.steps-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(195px, 1fr));
+  gap: 1.25rem;
+}
+
+.step-card {
+  background: rgba(255,255,255,.05);
+  border: 1px solid rgba(255,255,255,.1);
+  border-radius: var(--r-card); padding: 1.5rem;
+  position: relative; transition: transform .3s, box-shadow .3s;
+}
+.step-card:hover { transform: translateY(-4px); box-shadow: 0 12px 32px rgba(0,0,0,.2); }
+
+.step-number {
+  font-family: var(--font-d); font-size: 3rem;
+  line-height: 1; color: var(--accent); opacity: .2;
+  position: absolute; top: .85rem; right: 1.1rem;
+}
+
+.step-icon {
+  width: 42px; height: 42px; border-radius: 12px;
+  background: rgba(232,64,28,.15); border: 1px solid rgba(232,64,28,.25);
+  display: flex; align-items: center; justify-content: center;
+  color: var(--accent); font-size: 1.1rem; margin-bottom: .9rem;
+}
+
+.step-card h3 { font-size: .93rem; font-weight: 700; color: #fff; margin-bottom: .35rem; }
+.step-card p { font-size: .83rem; color: rgba(255,255,255,.52); line-height: 1.6; }
+
+/* =====================================================
+   PAGE HERO (subpages)
+   ===================================================== */
+.page-hero {
+  background: var(--grad-cool);
+  padding: 3.5rem 0 2.75rem;
+  position: relative; overflow: hidden;
+}
+.page-hero::before {
+  content: '';
+  position: absolute; inset: 0;
+  background: radial-gradient(ellipse at 50% 120%, rgba(232,64,28,.22) 0%, transparent 65%);
+}
+.page-hero::after {
+  content: '';
+  position: absolute; inset: 0;
+  background-image: linear-gradient(rgba(255,255,255,.025) 1px, transparent 1px),
+                    linear-gradient(90deg, rgba(255,255,255,.025) 1px, transparent 1px);
+  background-size: 36px 36px;
+}
+.page-hero .container { position: relative; z-index: 1; }
+.page-hero h1 {
+  font-family: var(--font-d);
+  font-size: clamp(2.6rem, 8vw, 5.5rem);
+  color: #fff; letter-spacing: .04em; line-height: 1;
+  margin-bottom: .7rem;
+}
+.page-hero p { color: rgba(255,255,255,.58); font-size: .95rem; max-width: 520px; }
+
+.breadcrumb {
+  display: flex; align-items: center; gap: .45rem;
+  margin-bottom: 1rem; font-size: .78rem;
+  color: rgba(255,255,255,.38);
+}
+.breadcrumb a { color: rgba(255,255,255,.48); transition: color .2s; }
+.breadcrumb a:hover { color: rgba(255,255,255,.85); }
+
+/* =====================================================
+   ABOUT SECTION
+   ===================================================== */
+.about-grid {
+  display: grid; grid-template-columns: 1fr;
+  gap: 3rem; align-items: center;
+}
+@media(min-width:768px){ .about-grid { grid-template-columns: 1fr 1fr; } }
+
+.about-img-wrap { position: relative; }
+.about-img-wrap img {
+  width: 100%; border-radius: 20px;
+  object-fit: cover; aspect-ratio: 1;
+}
+.about-badge {
+  position: absolute; bottom: -1rem; right: -1rem;
+  background: var(--grad); color: #fff;
+  padding: 1rem 1.5rem; border-radius: 16px;
+  text-align: center; font-weight: 700;
+  box-shadow: var(--sh-acc);
+}
+.about-badge .big { font-family: var(--font-d); font-size: 2.1rem; display: block; line-height: 1; }
+
+/* =====================================================
+   FAQ
+   ===================================================== */
+.faq-item { border-bottom: 1px solid var(--border); }
+.faq-question {
+  width: 100%; background: none; border: none;
+  padding: 1.2rem 0; display: flex; align-items: center;
+  justify-content: space-between; gap: 1rem;
+  font-size: .98rem; font-weight: 600; color: var(--text);
+  text-align: left; cursor: pointer; transition: color .2s;
+}
+.faq-question:hover { color: var(--accent); }
+.faq-icon {
+  flex-shrink: 0; width: 28px; height: 28px; border-radius: 50%;
+  background: rgba(232,64,28,.1); color: var(--accent);
+  display: flex; align-items: center; justify-content: center;
+  font-size: .78rem; transition: transform .3s, background .2s;
+}
+.faq-item.open .faq-icon { transform: rotate(45deg); background: var(--accent); color: #fff; }
+.faq-answer { max-height: 0; overflow: hidden; transition: max-height .4s ease, padding .3s; }
+.faq-item.open .faq-answer { max-height: 320px; padding-bottom: 1.2rem; }
+.faq-answer p { font-size: .93rem; color: var(--text-2); line-height: 1.75; }
+
+/* =====================================================
+   CONTACT CARDS
+   ===================================================== */
+.contact-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(215px,1fr)); gap: 1.25rem; }
+.contact-card {
+  background: rgba(255,255,255,.06);
+  border: 1px solid rgba(255,255,255,.1);
+  border-radius: 14px; padding: 1.35rem;
+  display: flex; align-items: center; gap: 1rem;
+  transition: transform .2s, background .2s;
+}
+.contact-card:hover { transform: translateY(-3px); background: rgba(255,255,255,.1); }
+.contact-icon {
+  width: 44px; height: 44px; border-radius: 12px;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 1.15rem; flex-shrink: 0;
+}
+.contact-card-text small {
+  font-size: .7rem; text-transform: uppercase; letter-spacing: .08em;
+  color: rgba(255,255,255,.38); font-weight: 600; display: block;
+}
+.contact-card-text a, .contact-card-text span {
+  font-size: .93rem; font-weight: 600;
+  color: rgba(255,255,255,.82); transition: color .2s;
+}
+.contact-card-text a:hover { color: #fff; }
+
+/* =====================================================
+   DARK SECTION (hero-style on light pages)
+   ===================================================== */
+.section-dark {
+  background: var(--ink);
+  color: #fff;
+  position: relative; overflow: hidden;
+}
+.section-dark::before {
+  content: '';
+  position: absolute; inset: 0;
+  background-image: radial-gradient(circle at 80% 50%, rgba(232,64,28,.1) 0%, transparent 55%),
+                    radial-gradient(circle at 10% 80%, rgba(245,166,35,.07) 0%, transparent 50%);
+  pointer-events: none;
+}
+.section-dark .container { position: relative; z-index: 1; }
+.section-dark .section-label { color: #FF8060; }
+.section-dark .section-label::before { background: #FF8060; }
+.section-dark .section-title { color: #fff; }
+.section-dark .section-desc { color: rgba(255,255,255,.58); }
+
+/* =====================================================
+   PRODUCT DETAIL PAGE
+   ===================================================== */
+.product-detail-grid {
+  display: grid; grid-template-columns: 1fr;
+  gap: 2.5rem; align-items: start;
+}
+@media(min-width:768px){ .product-detail-grid { grid-template-columns: 1fr 1fr; } }
+
+.product-gallery { position: sticky; top: calc(var(--hdr) + 1rem); }
+
+.gallery-main {
+  border-radius: 18px; overflow: hidden;
+  background: var(--bg-alt); aspect-ratio: 1;
+  margin-bottom: .65rem;
+  display: flex; align-items: center; justify-content: center;
+  border: 1px solid var(--border);
+}
+.gallery-main img { width: 100%; height: 100%; object-fit: contain; padding: 1.5rem; }
+
+.gallery-thumbs { display: flex; gap: .5rem; }
+.gallery-thumb {
+  width: 62px; height: 62px; border-radius: 10px; overflow: hidden;
+  border: 2px solid var(--border); cursor: pointer;
+  flex-shrink: 0; background: var(--bg-alt);
+  transition: border-color .2s;
+}
+.gallery-thumb img { width: 100%; height: 100%; object-fit: contain; padding: .2rem; }
+.gallery-thumb.active, .gallery-thumb:hover { border-color: var(--accent); }
+
+.product-info h1 {
+  font-family: var(--font-d);
+  font-size: clamp(2rem, 5vw, 3rem);
+  line-height: 1.05; color: var(--text); margin-bottom: .5rem;
+}
+.product-meta { display: flex; align-items: center; gap: 1rem; margin-bottom: 1.2rem; }
+.product-stars { color: var(--gold); font-size: .9rem; }
+.product-reviews { font-size: .83rem; color: var(--text-3); }
+.product-price-lg {
+  font-family: var(--font-d); font-size: 2.6rem;
+  color: var(--text); margin-bottom: 1.2rem; line-height: 1;
+}
+.product-desc { font-size: .95rem; color: var(--text-2); line-height: 1.78; margin-bottom: 1.5rem; }
+.product-option-label {
+  font-size: .75rem; font-weight: 700; text-transform: uppercase;
+  letter-spacing: .08em; color: var(--text-3); margin-bottom: .5rem; display: block;
+}
+.product-actions { display: flex; flex-direction: column; gap: .7rem; margin-top: 1.75rem; }
+.product-features {
+  display: grid; grid-template-columns: 1fr 1fr; gap: .7rem;
+  margin-top: 1.75rem; padding-top: 1.5rem;
+  border-top: 1px solid var(--border);
+}
+.feature-item {
+  display: flex; align-items: flex-start; gap: .45rem;
+  font-size: .84rem; color: var(--text-2);
+}
+.feature-item i { color: var(--teal); margin-top: .1rem; flex-shrink: 0; }
+
+/* =====================================================
+   FOOTER
+   ===================================================== */
+footer {
+  background: var(--ink);
+  color: rgba(255,255,255,.55);
+  padding: 3.5rem 0 2rem;
+  border-top: 1px solid rgba(255,255,255,.06);
+}
+.footer-grid {
+  display: grid; grid-template-columns: 1fr;
+  gap: 2.5rem; margin-bottom: 2.5rem;
+}
+@media(min-width:640px){ .footer-grid { grid-template-columns: 1fr 1fr; } }
+@media(min-width:1024px){ .footer-grid { grid-template-columns: 2fr 1fr 1fr; } }
+
+.footer-brand .logo-text {
+  font-family: var(--font-d); font-size: 2rem; color: #fff;
+  letter-spacing: .06em; margin-bottom: .7rem; display: block;
+}
+.footer-brand p { font-size: .88rem; line-height: 1.75; max-width: 275px; }
+
+.footer-social { display: flex; gap: .65rem; margin-top: 1.25rem; }
+.footer-social a {
+  width: 37px; height: 37px; border-radius: 9px;
+  border: 1px solid rgba(255,255,255,.13);
+  display: flex; align-items: center; justify-content: center;
+  font-size: .98rem; color: rgba(255,255,255,.55);
+  transition: background .2s, color .2s, border-color .2s;
+}
+.footer-social a:hover { background: var(--accent); border-color: var(--accent); color: #fff; }
+
+.footer-col h4 {
+  font-size: .75rem; font-weight: 700; text-transform: uppercase;
+  letter-spacing: .1em; color: rgba(255,255,255,.3); margin-bottom: .9rem;
+}
+.footer-col ul li { margin-bottom: .4rem; }
+.footer-col ul a { font-size: .88rem; color: rgba(255,255,255,.55); transition: color .2s; }
+.footer-col ul a:hover { color: #fff; }
+
+.footer-bottom {
+  border-top: 1px solid rgba(255,255,255,.08); padding-top: 1.4rem;
+  display: flex; align-items: center; justify-content: space-between;
+  flex-wrap: wrap; gap: .75rem;
+  font-size: .77rem; color: rgba(255,255,255,.28);
+}
+
+/* =====================================================
+   WHATSAPP FLOAT
+   ===================================================== */
+.wa-float {
+  position: fixed; bottom: 1.5rem; right: 1.5rem; z-index: 200;
+  display: flex; align-items: center; gap: .6rem;
+  background: var(--teal); color: #fff;
+  padding: .75rem 1.25rem; border-radius: var(--r-btn);
+  font-weight: 700; font-size: .88rem;
+  box-shadow: var(--sh-teal);
+  transition: transform .2s, box-shadow .2s;
+  animation: pulse 3s infinite;
+}
+.wa-float:hover { transform: translateY(-3px) scale(1.04); box-shadow: 0 12px 32px rgba(0,201,167,.5); animation: none; }
+.wa-label { display: none; }
+@media(min-width:480px){ .wa-label { display: inline; } }
+
+/* =====================================================
+   MISC UTILITIES
+   ===================================================== */
+.nota-precios {
+  font-size: .78rem; color: var(--text-3);
+  font-style: italic; text-align: center; margin-top: 2rem;
+}
+.custom-input {
+  width: 100%; padding: .72rem 1rem;
+  border: 1.5px solid var(--border); border-radius: 10px;
+  background: var(--card); color: var(--text);
+  font-family: var(--font-b); font-size: .93rem;
+  transition: border-color .2s;
+}
+.custom-input:focus { outline: none; border-color: var(--accent); }
+
+/* =====================================================
+   ANIMATIONS & REVEAL
+   ===================================================== */
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(22px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+@keyframes pulse {
+  0%, 100% { transform: scale(1); }
+  50%       { transform: scale(1.035); }
+}
+
+.reveal {
+  opacity: 0; transform: translateY(28px);
+  transition: opacity .65s ease, transform .65s ease;
+}
+.reveal.visible { opacity: 1; transform: translateY(0); }
+
+/* =====================================================
+   PRODUCTS PAGE SPECIFICS
+   ===================================================== */
+.cat-sticky-nav {
+  position: sticky; top: var(--hdr); z-index: 50;
+  background: rgba(250,250,248,.96);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--border);
+  padding: .7rem 0; margin-bottom: 2rem;
+  transition: background .3s;
+}
+body.dark .cat-sticky-nav {
+  background: rgba(13,13,26,.96);
+  border-color: var(--border);
+}
+.cat-sticky-nav .container { display: flex; gap: .5rem; flex-wrap: wrap; align-items: center; }
+
+.cat-pill {
+  display: inline-flex; align-items: center; gap: .38rem;
+  padding: .38rem .9rem; border-radius: var(--r-btn);
+  font-size: .82rem; font-weight: 600;
+  border: 1.5px solid var(--border); color: var(--text-2);
+  background: none; cursor: pointer; transition: all .2s;
+  white-space: nowrap;
+}
+.cat-pill:hover { border-color: var(--accent); color: var(--accent); }
+.cat-pill.active { background: var(--accent); border-color: var(--accent); color: #fff; box-shadow: var(--sh-acc); }
+
+.cat-section { padding: 0 0 clamp(2.5rem,6vw,4.5rem); }
+.cat-anchor {
+  display: flex; align-items: center; gap: 1rem;
+  margin-bottom: 2rem; padding-bottom: 1rem;
+  border-bottom: 2px solid var(--border);
+}
+.cat-anchor-icon {
+  width: 46px; height: 46px; border-radius: 13px;
+  background: var(--grad); color: #fff;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 1.2rem; flex-shrink: 0;
+  box-shadow: var(--sh-acc);
+}
+.cat-anchor h2 {
+  font-family: var(--font-d);
+  font-size: clamp(1.6rem,4vw,2.3rem);
+  letter-spacing: .03em; line-height: 1; color: var(--text);
+}
+.cat-anchor p { font-size: .84rem; color: var(--text-3); margin-top: .2rem; }
+.cat-see-all { margin-left: auto; flex-shrink: 0; }
+
+.promo-banner {
+  background: var(--grad); border-radius: 18px;
+  padding: 1.6rem 2rem;
+  display: flex; flex-wrap: wrap; align-items: center;
+  justify-content: space-between; gap: 1.25rem;
+  margin-bottom: 3rem; box-shadow: var(--sh-acc);
+}
+.promo-banner h3 { font-family: var(--font-d); font-size: 1.65rem; color: #fff; letter-spacing: .03em; }
+.promo-banner p { color: rgba(255,255,255,.72); font-size: .88rem; margin-top: .25rem; }
+
+</style>
+</head>
+<body>
+<header id="main-header">
+  <div class="container">
+    <h1 id="logo">
+      <a href="index.html">
+        <img src="Logosublimarce.jpg" alt="Logo Sublimarce" loading="lazy">
+        SUBLIMARCE
+      </a>
+    </h1>
+    <button id="mobileMenuButton" aria-label="Abrir menú" aria-expanded="false">
+      <i class="fas fa-bars"></i>
+    </button>
+    <nav id="mainNav" aria-label="Navegación principal">
+      <a href="index.html" class="active">Inicio</a>
+      <a href="products.html" >Catálogo</a>
+      <a href="gorras.html" >Gorras</a>
+      <a href="remeras.html" >Remeras</a>
+      <a href="tazas.html" >Tazas</a>
+      <a href="llaveros.html" >Llaveros</a>
+      <a href="index.html#contacto" >Contacto</a>
+    </nav>
+    <div class="hdr-actions">
+      <button id="darkModeToggle" aria-label="Modo oscuro">
+        <i class="fas fa-moon icon-moon"></i>
+        <i class="fas fa-sun icon-sun" style="display:none"></i>
+      </button>
+      <a href="https://wa.me/5491133223802" target="_blank" rel="noopener" class="btn-wa-header">
+        <i class="fab fa-whatsapp"></i><span>WhatsApp</span>
+      </a>
+    </div>
+  </div>
+</header>
+<main>
+
+  <!-- HERO -->
+  <section id="inicio" style="padding:0;">
+    <div class="hero-bg"></div>
+    <div class="hero-overlay"></div>
+    <div class="hero-content container">
+      <span class="hero-eyebrow">✦ Sublimación &amp; Personalización</span>
+      <h2 class="hero-title">TUS IDEAS<br><span class="acc">HECHAS</span><br><span class="acc2">REALIDAD</span></h2>
+      <p class="hero-subtitle">Gorras, remeras, tazas, llaveros y más. Diseñamos cada pieza con la calidad que tu marca merece.</p>
+      <div class="hero-actions">
+        <a href="products.html" class="btn-primary"><i class="fas fa-th-large"></i> Ver Catálogo</a>
+        <a href="https://wa.me/5491133223802?text=Hola!%20Quiero%20cotizar%20un%20producto%20personalizado" target="_blank" rel="noopener" class="btn-secondary"><i class="fab fa-whatsapp"></i> Pedir cotización</a>
+      </div>
+      <div class="hero-stats">
+        <div><div class="stat-num">500+</div><div class="stat-label">Clientes felices</div></div>
+        <div><div class="stat-num">20+</div><div class="stat-label">Productos</div></div>
+        <div><div class="stat-num">48h</div><div class="stat-label">Entrega express</div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PRODUCTOS DESTACADOS -->
+  <section id="productos-destacados" style="background:var(--bg-alt);">
+    <div class="container">
+      <div class="reveal">
+        <span class="section-label">Catálogo</span>
+        <h2 class="section-title">Productos Destacados</h2>
+        <p class="section-desc">Cada producto es sublimado con tecnología de alta temperatura para colores permanentes y durabilidad garantizada.</p>
+      </div>
+      <div class="products-grid" style="margin-top:2.5rem;">
+        <article class="product-card reveal" data-cat="">
+          <div class="product-card-img">
+            <img src="gorranegra.webp" alt="Gorra Trucker Negra sublimada" loading="lazy">
+            <span class="product-badge">⭐ Popular</span>
+          </div>
+          <div class="product-card-body">
+            <h3>Gorra Trucker Negra</h3>
+            <p>Clásico trucker de 5 paneles con malla trasera. Frente 100% sublimable.</p>
+            <div class="product-card-footer">
+              <div class="product-price"><small>Desde</small>$25.000</div>
+              <a href="gorra-trucker-frente-color.html" class="btn-outline">Ver más</a>
+            </div>
+          </div>
+          <div class="product-card-wa">
+            <a href="https://wa.me/5491133223802?text=Hola!%20Me%20interesa%20la%20Gorra%20Trucker%20Negra" target="_blank" rel="noopener" class="btn-wa">
+              <i class="fab fa-whatsapp"></i> Consultar precio
+            </a>
+          </div>
+        </article>
+        <article class="product-card reveal" data-cat="">
+          <div class="product-card-img">
+            <img src="gorra_roja.jpeg" alt="Gorra Trucker bicolor roja personalizada" loading="lazy">
+            <span class="product-badge">🔥 Nuevo</span>
+          </div>
+          <div class="product-card-body">
+            <h3>Gorra Trucker Bicolor</h3>
+            <p>Frente blanco sublimable con visera y malla a color. Ideal para eventos y uniformes.</p>
+            <div class="product-card-footer">
+              <div class="product-price"><small>Desde</small>$27.000</div>
+              <a href="gorra-trucker-frente-color.html" class="btn-outline">Ver más</a>
+            </div>
+          </div>
+          <div class="product-card-wa">
+            <a href="https://wa.me/5491133223802?text=Hola!%20Me%20interesa%20la%20Gorra%20Trucker%20Bicolor" target="_blank" rel="noopener" class="btn-wa">
+              <i class="fab fa-whatsapp"></i> Consultar precio
+            </a>
+          </div>
+        </article>
+        <article class="product-card reveal" data-cat="">
+          <div class="product-card-img">
+            <img src="GORRAAMARILLA.webp" alt="Gorra Trucker Amarilla sublimada" loading="lazy">
+            
+          </div>
+          <div class="product-card-body">
+            <h3>Gorra Trucker Amarilla</h3>
+            <p>Color vibrante de temporada, 100% sublimable en frente y laterales.</p>
+            <div class="product-card-footer">
+              <div class="product-price"><small>Desde</small>$25.000</div>
+              <a href="gorra-trucker-frente-color.html" class="btn-outline">Ver más</a>
+            </div>
+          </div>
+          <div class="product-card-wa">
+            <a href="https://wa.me/5491133223802?text=Hola!%20Me%20interesa%20la%20Gorra%20Trucker%20Amarilla" target="_blank" rel="noopener" class="btn-wa">
+              <i class="fab fa-whatsapp"></i> Consultar precio
+            </a>
+          </div>
+        </article>
+      </div>
+      <div style="text-align:center;margin-top:2.5rem;" class="reveal">
+        <a href="products.html" class="btn-primary">Ver todo el catálogo <i class="fas fa-arrow-right"></i></a>
+      </div>
+      <p class="nota-precios">(*) Precios de referencia, consultar por cantidad y diseño.</p>
+    </div>
+  </section>
+
+  <!-- CÓMO PEDIR -->
+  <section id="como-pedir" class="section-dark">
+    <div class="container">
+      <div class="reveal" style="text-align:center;margin-bottom:2.5rem;">
+        <span class="section-label">Proceso</span>
+        <h2 class="section-title">¿Cómo Pedir?</h2>
+        <p class="section-desc" style="margin:0 auto;">Simple, rápido y 100% personalizado. En 5 pasos tenés tu producto.</p>
+      </div>
+      <div class="steps-grid reveal">
+        <div class="step-card"><span class="step-number">01</span><div class="step-icon"><i class="fas fa-search"></i></div><h3>Explorá el catálogo</h3><p>Elegí el producto base que más te guste entre nuestras categorías.</p></div>
+        <div class="step-card"><span class="step-number">02</span><div class="step-icon"><i class="fas fa-paint-brush"></i></div><h3>Mandá tu diseño</h3><p>Envianos tu logo, imagen o idea por WhatsApp en alta resolución.</p></div>
+        <div class="step-card"><span class="step-number">03</span><div class="step-icon"><i class="fas fa-file-invoice-dollar"></i></div><h3>Recibí cotización</h3><p>Te enviamos presupuesto y preview de cómo quedará tu producto.</p></div>
+        <div class="step-card"><span class="step-number">04</span><div class="step-icon"><i class="fas fa-check-circle"></i></div><h3>Aprobás y producimos</h3><p>Con tu OK iniciamos la sublimación de alta calidad.</p></div>
+        <div class="step-card"><span class="step-number">05</span><div class="step-icon"><i class="fas fa-shipping-fast"></i></div><h3>Entrega o envío</h3><p>Coordinamos retiro o enviamos a todo el país.</p></div>
+      </div>
+      <div style="text-align:center;margin-top:2.5rem;" class="reveal">
+        <a href="https://wa.me/5491133223802?text=Hola!%20Quiero%20hacer%20un%20pedido%20personalizado" target="_blank" rel="noopener" class="btn-primary"><i class="fab fa-whatsapp"></i> Empezar mi pedido</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- SOBRE NOSOTROS -->
+  <section id="nosotros" style="background:var(--bg);">
+    <div class="container">
+      <div class="about-grid">
+        <div class="about-img-wrap reveal">
+          <img src="Logosublimarce.jpg" alt="Sublimarce - sublimación personalizada Argentina" loading="lazy">
+          <div class="about-badge"><span class="big">100%</span><span>Personalizado</span></div>
+        </div>
+        <div class="reveal">
+          <span class="section-label">Nuestra historia</span>
+          <h2 class="section-title">Sobre Sublimarce</h2>
+          <p class="section-desc" style="margin-bottom:1.2rem;">Un emprendimiento apasionado por convertir ideas en objetos únicos. Nacimos para ayudar a marcas, empresas y personas a diferenciarse con productos sublimados de altísima calidad.</p>
+          <p style="color:var(--text-2);font-size:.95rem;line-height:1.78;margin-bottom:1.75rem;">Utilizamos tecnología de sublimación de última generación para garantizar colores vibrantes, durabilidad excepcional y nitidez de imagen. Cada pedido recibe atención personalizada.</p>
+          <div style="display:flex;flex-wrap:wrap;gap:1.5rem;margin-bottom:2rem;">
+            <div><div style="font-family:var(--font-d);font-size:2rem;color:var(--accent);">500+</div><div style="font-size:.84rem;color:var(--text-3);">Pedidos realizados</div></div>
+            <div><div style="font-family:var(--font-d);font-size:2rem;color:var(--gold);">4.9★</div><div style="font-size:.84rem;color:var(--text-3);">Satisfacción</div></div>
+            <div><div style="font-family:var(--font-d);font-size:2rem;color:var(--teal);">3 años</div><div style="font-size:.84rem;color:var(--text-3);">De experiencia</div></div>
+          </div>
+          <a href="#contacto" class="btn-ghost">Hablar con nosotros <i class="fas fa-arrow-right"></i></a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section id="faq" style="background:var(--bg-alt);">
+    <div class="container">
+      <div class="reveal" style="text-align:center;margin-bottom:2.5rem;">
+        <span class="section-label">FAQ</span>
+        <h2 class="section-title">Preguntas Frecuentes</h2>
+      </div>
+      <div style="max-width:700px;margin:0 auto;" class="reveal">
+        <div class="faq-item"><button class="faq-question">¿Cuántas unidades mínimas necesito pedir?<span class="faq-icon"><i class="fas fa-plus"></i></span></button><div class="faq-answer"><p>¡Trabajamos desde 1 unidad! Para más de 10 unidades ofrecemos precios especiales por volumen.</p></div></div>
+        <div class="faq-item"><button class="faq-question">¿En qué formato debo enviar el diseño?<span class="faq-icon"><i class="fas fa-plus"></i></span></button><div class="faq-answer"><p>Aceptamos PNG (mínimo 300 DPI), SVG o AI. Si solo tenés un logo en baja calidad, podemos vectorizarlo sin costo adicional.</p></div></div>
+        <div class="faq-item"><button class="faq-question">¿Cuánto tarda la producción?<span class="faq-icon"><i class="fas fa-plus"></i></span></button><div class="faq-answer"><p>Pedidos pequeños (hasta 5 unidades) listos en 48 hs hábiles. Pedidos grandes entre 5 y 7 días hábiles.</p></div></div>
+        <div class="faq-item"><button class="faq-question">¿Hacen envíos a todo el país?<span class="faq-icon"><i class="fas fa-plus"></i></span></button><div class="faq-answer"><p>Sí. Enviamos con Correo Argentino, OCA y Andreani. También podés retirar en persona sin costo.</p></div></div>
+        <div class="faq-item"><button class="faq-question">¿Qué métodos de pago aceptan?<span class="faq-icon"><i class="fas fa-plus"></i></span></button><div class="faq-answer"><p>Transferencia bancaria, MercadoPago (tarjetas crédito/débito y cuotas sin interés), efectivo.</p></div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACTO -->
+  <section id="contacto" class="section-dark">
+    <div class="container">
+      <div class="reveal" style="text-align:center;margin-bottom:2.5rem;">
+        <span class="section-label">Contacto</span>
+        <h2 class="section-title">Hablemos</h2>
+        <p class="section-desc" style="margin:0 auto;">¿Tenés una idea? Contactanos y la hacemos realidad.</p>
+      </div>
+      <div class="contact-grid reveal">
+        <a href="https://wa.me/5491133223802" target="_blank" rel="noopener" class="contact-card" style="text-decoration:none;">
+          <div class="contact-icon" style="background:rgba(0,201,167,.15);color:var(--teal);"><i class="fab fa-whatsapp"></i></div>
+          <div class="contact-card-text"><small>WhatsApp</small><span>+54 9 11 3322-3802</span></div>
+        </a>
+        <a href="tel:+541133223802" class="contact-card" style="text-decoration:none;">
+          <div class="contact-icon" style="background:rgba(232,64,28,.15);color:var(--accent);"><i class="fas fa-phone"></i></div>
+          <div class="contact-card-text"><small>Teléfono</small><span>(+54) 11 3322-3802</span></div>
+        </a>
+        <a href="mailto:sublimarcearg@gmail.com" class="contact-card" style="text-decoration:none;">
+          <div class="contact-icon" style="background:rgba(245,166,35,.15);color:var(--gold);"><i class="fas fa-envelope"></i></div>
+          <div class="contact-card-text">
+          <small>Email</small>
+          <span style="font-size: 0.7rem; display: block; margin-top: 2px;">sublimarcearg@gmail.com</span> </div>
+        </a>
+        <a href="https://instagram.com/sublimarce.arg" target="_blank" rel="noopener" class="contact-card" style="text-decoration:none;">
+          <div class="contact-icon" style="background:rgba(225,48,108,.12);color:#E1306C;"><i class="fab fa-instagram"></i></div>
+          <div class="contact-card-text"><small>Instagram</small><span>@sublimarce.arg</span></div>
+        </a>
+      </div>
+    </div>
+  </section>
+</main>
+<footer>
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <span class="logo-text">SUBLIMARCE</span>
+        <p>Sublimación y personalización de productos con la calidad y el detalle que tu marca merece.</p>
+        <div class="footer-social">
+          <a href="https://instagram.com/sublimarce.arg" target="_blank" rel="noopener" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+          <a href="https://www.facebook.com/people/Sublimarcearg/100088128799547/" target="_blank" rel="noopener" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+          <a href="https://wa.me/5491133223802" target="_blank" rel="noopener" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+        </div>
+      </div>
+      <div class="footer-col">
+        <h4>Productos</h4>
+        <ul>
+          <li><a href="gorras.html">Gorras Trucker</a></li>
+          <li><a href="remeras.html">Remeras</a></li>
+          <li><a href="tazas.html">Tazas</a></li>
+          <li><a href="llaveros.html">Llaveros</a></li>
+          <li><a href="products.html">Ver todo</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Empresa</h4>
+        <ul>
+          <li><a href="index.html#nosotros">Sobre Nosotros</a></li>
+          <li><a href="index.html#como-pedir">¿Cómo Pedir?</a></li>
+          <li><a href="index.html#faq">Preguntas Frecuentes</a></li>
+          <li><a href="index.html#contacto">Contacto</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© <span data-year></span> Sublimarce. Todos los derechos reservados.</span>
+      <span>Hecho con ❤️ en Argentina</span>
+    </div>
+  </div>
+</footer>
+
+<a href="https://wa.me/5491133223802?text=Hola!%20Quiero%20consultar%20sobre%20productos%20personalizados"
+   target="_blank" rel="noopener" class="wa-float" aria-label="Consultar por WhatsApp">
+  <i class="fab fa-whatsapp" style="font-size:1.25rem;"></i>
+  <span class="wa-label">¡Consultanos!</span>
+</a>
+<script>
+/* ===== SUBLIMARCE v3 — Shared JS ===== */
+document.addEventListener('DOMContentLoaded', () => {
+
+  /* ── Dark Mode ── */
+  const dBtn = document.getElementById('darkModeToggle');
+  function setDark(on) {
+    document.body.classList.toggle('dark', on);
+    if (dBtn) {
+      dBtn.querySelector('.icon-moon').style.display = on ? 'none' : '';
+      dBtn.querySelector('.icon-sun').style.display  = on ? '' : 'none';
+    }
+    localStorage.setItem('dm', on ? '1' : '0');
+  }
+  const saved = localStorage.getItem('dm');
+  setDark(saved !== null ? saved === '1' : window.matchMedia('(prefers-color-scheme: dark)').matches);
+  if (dBtn) dBtn.addEventListener('click', () => setDark(!document.body.classList.contains('dark')));
+
+  /* ── Mobile Menu ── */
+  const mBtn = document.getElementById('mobileMenuButton');
+  const nav  = document.getElementById('mainNav');
+  if (mBtn && nav) {
+    mBtn.addEventListener('click', () => {
+      const open = nav.classList.toggle('open');
+      mBtn.setAttribute('aria-expanded', open);
+    });
+    nav.querySelectorAll('a').forEach(a => a.addEventListener('click', () => nav.classList.remove('open')));
+  }
+
+  /* ── Year ── */
+  document.querySelectorAll('[data-year]').forEach(el => el.textContent = new Date().getFullYear());
+
+  /* ── Smooth Scroll ── */
+  document.querySelectorAll('a[href^="#"]').forEach(a => {
+    a.addEventListener('click', e => {
+      const t = document.querySelector(a.getAttribute('href'));
+      if (t) { e.preventDefault(); const off = document.getElementById('main-header')?.offsetHeight || 68; window.scrollTo({ top: t.offsetTop - off, behavior: 'smooth' }); }
+    });
+  });
+
+  /* ── Active Nav (scroll-spy) ── */
+  const sections  = document.querySelectorAll('section[id]');
+  const navLinks  = document.querySelectorAll('#mainNav a');
+  function updateNav() {
+    const off = (document.getElementById('main-header')?.offsetHeight || 68) + 60;
+    let cur = '';
+    sections.forEach(s => { if (window.scrollY >= s.offsetTop - off) cur = s.id; });
+    navLinks.forEach(a => {
+      const href = a.getAttribute('href') || '';
+      a.classList.toggle('active', cur && (href.endsWith('#' + cur) || href.endsWith(cur)));
+    });
+  }
+  window.addEventListener('scroll', updateNav, { passive: true });
+  updateNav();
+
+  /* ── FAQ Accordion ── */
+  document.querySelectorAll('.faq-question').forEach(q => {
+    q.addEventListener('click', () => {
+      const item = q.closest('.faq-item');
+      const wasOpen = item.classList.contains('open');
+      document.querySelectorAll('.faq-item.open').forEach(i => i.classList.remove('open'));
+      if (!wasOpen) item.classList.add('open');
+    });
+  });
+
+  /* ── Scroll Reveal ── */
+  if ('IntersectionObserver' in window) {
+    const obs = new IntersectionObserver(entries => {
+      entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); obs.unobserve(e.target); } });
+    }, { threshold: 0.08, rootMargin: '0px 0px -40px 0px' });
+    document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
+  } else {
+    document.querySelectorAll('.reveal').forEach(el => el.classList.add('visible'));
+  }
+
+  /* ── Gallery Thumbs ── */
+  document.querySelectorAll('.gallery-thumb').forEach(th => {
+    th.addEventListener('click', () => {
+      const img = document.getElementById('gallery-main-img');
+      if (img && th.dataset.img) { img.src = th.dataset.img; }
+      document.querySelectorAll('.gallery-thumb').forEach(t => t.classList.remove('active'));
+      th.classList.add('active');
+    });
+  });
+
+  /* ── Category Filter ── */
+  document.querySelectorAll('[data-filter-group]').forEach(group => {
+    const grid = document.getElementById(group.dataset.filterGroup);
+    if (!grid) return;
+    group.querySelectorAll('.cat-btn').forEach(btn => {
+      btn.addEventListener('click', () => {
+        group.querySelectorAll('.cat-btn').forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        const f = btn.dataset.filter;
+        grid.querySelectorAll('.product-card').forEach(card => {
+          card.style.display = (f === 'all' || (card.dataset.cat || '').includes(f)) ? '' : 'none';
+        });
+      });
+    });
+  });
+
+  /* ── Sticky cat pills highlight ── */
+  document.querySelectorAll('.cat-pill[onclick]').forEach(pill => {
+    pill.addEventListener('click', () => {
+      document.querySelectorAll('.cat-pill').forEach(p => p.classList.remove('active'));
+      pill.classList.add('active');
+    });
+  });
+
+});
+
+/* ── Scroll to cat anchor ── */
+function scrollTo(id) {
+  const el = document.getElementById(id);
+  if (el) { const off = document.getElementById('main-header')?.offsetHeight || 68; window.scrollTo({ top: el.offsetTop - off - 48, behavior: 'smooth' }); }
+}
+
+</script>
+</body>
+</html>
